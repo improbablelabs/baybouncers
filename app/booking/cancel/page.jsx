@@ -4,9 +4,10 @@
 
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
-export default function BookingCancel() {
+function CancelContent() {
   const searchParams = useSearchParams();
   const bookingId = searchParams.get("booking_id");
 
@@ -64,5 +65,13 @@ export default function BookingCancel() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function BookingCancel() {
+  return (
+    <Suspense>
+      <CancelContent />
+    </Suspense>
   );
 }

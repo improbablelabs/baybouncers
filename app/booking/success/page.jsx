@@ -4,10 +4,11 @@
 
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function BookingSuccess() {
+function SuccessContent() {
   const searchParams = useSearchParams();
   const bookingId = searchParams.get("booking_id");
   const sessionId = searchParams.get("session_id");
@@ -97,5 +98,13 @@ export default function BookingSuccess() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function BookingSuccess() {
+  return (
+    <Suspense>
+      <SuccessContent />
+    </Suspense>
   );
 }
