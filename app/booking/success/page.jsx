@@ -53,7 +53,7 @@ function SuccessContent() {
           color: "#888", lineHeight: 1.6, marginBottom: 32,
         }}>
           Your $60 deposit has been received and your bounce house is reserved!
-          We'll reach out within 24 hours to confirm the details.
+          We'll send an email confirmation shortly, reach out by phone if you need help with your order.
         </p>
 
         <div style={{
