@@ -210,14 +210,14 @@ function Navbar({ onNavigate, bannerVisible }) {
             transition: "all 0.4s ease",
           }}>BayBouncers</span>
         </div>
-        <a href="tel:+18315551234" style={{
+        <a href="tel:+18313329417" style={{
           display: isMobile ? "none" : "flex", alignItems: "center", gap: 6,
           textDecoration: "none", fontFamily: "'DM Sans', sans-serif",
           fontSize: 14, fontWeight: 600,
           color: scrolled ? "#555" : "rgba(255,255,255,0.9)",
           transition: "color 0.4s ease",
         }}>
-          <span style={{ fontSize: 16 }}>📞</span> (831) 555-JUMP
+          <span style={{ fontSize: 16 }}>📞</span> (831) 332-9417
         </a>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
         <button onClick={() => setMenuOpen(!menuOpen)} style={{
@@ -720,7 +720,7 @@ function FAQ() {
           textAlign: "center", marginTop: 36,
           fontFamily: "'DM Sans', sans-serif", fontSize: 15, color: "#888",
         }}>
-          Still have questions? Call us at <a href="tel:+18315551234" style={{ color: "#FF8C00", fontWeight: 700, textDecoration: "none" }}>(831) 555-JUMP</a>
+          Still have questions? Call us at <a href="tel:+18313329417" style={{ color: "#FF8C00", fontWeight: 700, textDecoration: "none" }}>(831) 332-9417</a>
         </div>
       </div>
     </section>
@@ -1394,7 +1394,7 @@ function BookingWizard({ promoActive }) {
                 </div>
                 <div>
                   <label style={labelStyle}>Phone *</label>
-                  <input style={inputStyle} placeholder="(831) 555-1234" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })}
+                  <input style={inputStyle} placeholder="(831) 332-9417" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })}
                     onFocus={e => e.target.style.borderColor = "#FFD700"} onBlur={e => e.target.style.borderColor = "#eee"} />
                 </div>
               </div>
@@ -1995,7 +1995,7 @@ function Footer() {
           Delivering premium bounce house rentals to Watsonville, Aptos, Capitola, Soquel, Santa Cruz, Scotts Valley, Gilroy, Morgan Hill, Campbell, Los Gatos, and San Jose.
         </p>
         <div style={{ display: "flex", gap: 24, justifyContent: "center", marginBottom: 28, fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#888" }}>
-          <span>📞 (831) 555-JUMP</span>
+          <span>📞 (831) 332-9417</span>
           <span>📧 hello@baybouncers.com</span>
         </div>
         <BouncingDots />

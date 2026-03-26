@@ -88,7 +88,7 @@ export default function BookingSuccess() {
               fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 16,
               padding: "14px 32px", borderRadius: 50, display: "inline-block",
             }}>Back to Home</a>
-          <a href="tel:+18315551234"
+          <a href="tel:+18313329417"
             style={{
               background: "#f5f5f5", color: "#888", textDecoration: "none",
               fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 14,

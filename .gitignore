@@ -1,4 +1,11 @@
 node_modules
-.env.local
 .next
-baybouncers-2c0af-firebase-adminsdk*.json
+.env.local
+.env
+.DS_Store
+*.json
+!package.json
+!jsconfig.json
+!next.config.js
+!tailwind.config.js
+!postcss.config.js

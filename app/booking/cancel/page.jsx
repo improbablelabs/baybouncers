@@ -42,7 +42,7 @@ export default function BookingCancel() {
           fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#666",
         }}>
           <p style={{ margin: 0 }}>
-            Want to pay with cash? Just call us at <strong style={{ color: "#FF8C00" }}>(831) 555-JUMP</strong> and
+            Want to pay with cash? Just call us at <strong style={{ color: "#FF8C00" }}>(831) 332-9417</strong> and
             we'll reserve your bounce house over the phone!
           </p>
         </div>
