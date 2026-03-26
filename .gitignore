@@ -1,14 +1,4 @@
-# env files
-.env
+node_modules
 .env.local
-.env*.local
-
-# Next.js
-.next/
-out/
-
-# dependencies
-node_modules/
-
-# misc
-.DS_Store
+.next
+baybouncers-2c0af-firebase-adminsdk*.json
