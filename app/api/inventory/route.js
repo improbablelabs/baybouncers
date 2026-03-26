@@ -1,7 +1,7 @@
 import { adminDb } from "@/firebase/firebase-admin";
 
-const TOTAL_TABLES = 10;
-const TOTAL_CHAIRS = 50;
+const TOTAL_TABLES = 2;
+const TOTAL_CHAIRS = 12;
 
 export async function GET(request) {
   const { searchParams } = new URL(request.url);

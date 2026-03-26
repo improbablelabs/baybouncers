@@ -792,12 +792,13 @@ function BookingWizard({ promoActive }) {
   const minDateObj = new Date();
   minDateObj.setDate(minDateObj.getDate() + MIN_BOOKING_DAYS_AHEAD);
   const minDate = minDateObj.toISOString().split("T")[0];
+  const minDateFormatted = new Date(minDate + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
 
   const [dateError, setDateError] = useState("");
 
   const handleDateSelect = (date) => {
     if (date < minDate) {
-      setDateError(`Please book at least ${MIN_BOOKING_DAYS_AHEAD} days in advance.`);
+      setDateError(`We're booked out until ${minDateFormatted} — please select a date on or after that.`);
       return;
     }
     setDateError("");
@@ -1057,7 +1058,7 @@ function BookingWizard({ promoActive }) {
                   onChange={e => {
                     setSelectedDate(e.target.value);
                     if (e.target.value < minDate) {
-                      setDateError(`Please book at least ${MIN_BOOKING_DAYS_AHEAD} days in advance.`);
+                      setDateError(`We're booked out until ${minDateFormatted} — please select a date on or after that.`);
                     } else {
                       setDateError("");
                     }

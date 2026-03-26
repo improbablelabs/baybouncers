@@ -24,8 +24,8 @@ const ADD_ON_PRICES = {
 };
 const TABLE_UNIT_PRICE = 20;
 const CHAIR_UNIT_PRICE = 5;
-const TOTAL_TABLES = 10;
-const TOTAL_CHAIRS = 50;
+const TOTAL_TABLES = 2;
+const TOTAL_CHAIRS = 12;
 
 // Recalculate total server-side to prevent price tampering
 function calculateTotal(data, bouncer) {
