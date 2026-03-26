@@ -24,6 +24,18 @@ function getFirebaseAdmin() {
   });
 }
 
-const adminApp = getFirebaseAdmin();
-export const adminDb = getFirestore(adminApp);
-export default adminApp;
+let _adminDb;
+export function getAdminDb() {
+  if (!_adminDb) {
+    const app = getFirebaseAdmin();
+    _adminDb = getFirestore(app);
+  }
+  return _adminDb;
+}
+
+// Lazy proxy so existing `adminDb.collection(...)` calls keep working
+export const adminDb = new Proxy({}, {
+  get(_, prop) {
+    return getAdminDb()[prop];
+  }
+});

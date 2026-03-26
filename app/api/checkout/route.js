@@ -5,6 +5,8 @@
 import Stripe from "stripe";
 import { adminDb } from "@/firebase/firebase-admin";
 import { FieldValue } from "firebase-admin/firestore";
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 

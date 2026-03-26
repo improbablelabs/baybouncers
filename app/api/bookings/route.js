@@ -5,6 +5,8 @@
 
 import { adminDb } from "@/firebase/firebase-admin";
 import { FieldValue } from "firebase-admin/firestore";
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 
 // All bouncer data (keep in sync with frontend)
 const BOUNCERS = [
