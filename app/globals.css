@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Date picker visibility — desktop vs mobile */
+.date-mobile { display: none; }
+.date-desktop { display: block; }
+
+@media (max-width: 768px) {
+  .date-mobile { display: block; }
+  .date-desktop { display: none; }
+}
+
+/* Mobile Safari date input fix */
+input[type="date"] {
+  -webkit-appearance: textfield;
+  min-height: 52px;
+}
+
+input[type="date"]::-webkit-date-and-time-value {
+  color: #222;
+  text-align: center;
+  min-height: 1.2em;
+}
