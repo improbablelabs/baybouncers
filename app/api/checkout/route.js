@@ -199,7 +199,7 @@ export async function POST(request) {
             name: "Reservation Deposit (Non-Refundable)",
             description: `${bouncer.name} on ${data.date} (${data.startTime} to ${data.endTime}). Deposit secures your booking and remains as credit if cancelled.`,
           },
-          unit_amount: 50,
+          unit_amount: 6000, // $60.00 in cents
         },
         quantity: 1,
       },
