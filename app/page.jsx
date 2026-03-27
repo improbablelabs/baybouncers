@@ -830,7 +830,8 @@ function BookingWizard({ promoActive }) {
       const res = await fetch(`/api/availability?${params}`);
       if (!res.ok) throw new Error("Failed");
       const data = await res.json();
-      setAvailable(data.available);
+      const availableIds = new Set(data.available.map(b => b.id));
+      setAvailable(BOUNCERS.filter(b => availableIds.has(b.id)));
       setSelectedBouncer(null);
       setStep(3);
     } catch (err) {
