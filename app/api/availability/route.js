@@ -30,10 +30,14 @@ export async function GET(request) {
     const snap = await adminDb
       .collection("bookings")
       .where("date", "==", dateStr)
-      .where("status", "not-in", ["cancelled", "expired"])
       .get();
 
-    snap.forEach(doc => bookedIds.add(doc.data().bouncerId));
+    snap.forEach(doc => {
+      const { status, bouncerId } = doc.data();
+      if (status !== "cancelled" && status !== "expired") {
+        bookedIds.add(bouncerId);
+      }
+    });
   }
 
   const available = BOUNCERS.filter(b => !bookedIds.has(b.id));
