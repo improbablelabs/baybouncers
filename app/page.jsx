@@ -197,7 +197,7 @@ function Navbar({ onNavigate, bannerVisible }) {
     }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "14px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }} onClick={() => onNavigate("home")}>
-          <span style={{ fontSize: 32 }}>🎪</span>
+          <img src="/icon.png" alt="Bay Bouncers" style={{ width: 36, height: 36, objectFit: "contain" }} />
           <span style={{
             fontFamily: "'Lilita One', 'Fredoka One', cursive",
             fontSize: 26, fontWeight: 800,
@@ -265,82 +265,81 @@ function Navbar({ onNavigate, bannerVisible }) {
 function Hero({ onNavigate }) {
   return (
     <section id="home" style={{
-      minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center",
-      background: "linear-gradient(165deg, #FF8C00 0%, #FFD700 35%, #FFEC80 70%, #FFF9E0 100%)",
-      position: "relative", overflow: "hidden", textAlign: "center", padding: "120px 24px 80px",
+      minHeight: "100vh", display: "flex", alignItems: "center",
+      background: "linear-gradient(135deg, #FF8C00 0%, #FFD700 50%, #FFEC80 100%)",
+      position: "relative", overflow: "hidden", padding: "120px 0 80px",
     }}>
-      {[
-        { size: 180, top: "10%", left: "5%", color: "rgba(255,255,255,0.12)", delay: "0s" },
-        { size: 120, top: "60%", right: "8%", color: "rgba(255,255,255,0.1)", delay: "1s" },
-        { size: 80, top: "25%", right: "20%", color: "rgba(255,165,0,0.15)", delay: "0.5s" },
-        { size: 200, bottom: "10%", left: "15%", color: "rgba(255,255,255,0.08)", delay: "1.5s" },
-      ].map((s, i) => (
-        <div key={i} style={{
-          position: "absolute", width: s.size, height: s.size, borderRadius: "50%",
-          background: s.color, top: s.top, left: s.left, right: s.right, bottom: s.bottom,
-          animation: `bayFloat 6s ease-in-out ${s.delay} infinite alternate`,
-        }} />
-      ))}
-      <div style={{ position: "relative", zIndex: 2, maxWidth: 800 }}>
-        <div style={{ marginBottom: 10, animation: "bayBounce 1s ease-in-out infinite alternate", display: "flex", justifyContent: "center" }}>
-          <img src="/house.png" alt="BayBouncers bounce house" style={{ width: 120, height: 120, objectFit: "contain" }} />
+      {/* Left text column */}
+      <div style={{
+        position: "relative", zIndex: 2, flex: "1 1 50%",
+        padding: "0 48px 0 clamp(24px, 6vw, 96px)", maxWidth: 680,
+      }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
+          <img src="/icon.png" alt="" style={{ width: 48, height: 48, objectFit: "contain" }} />
+          <span style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 14, color: "#5A3D00", letterSpacing: 1, textTransform: "uppercase" }}>Monterey Bay's Bounce Crew</span>
         </div>
         <h1 style={{
           fontFamily: "'Lilita One', 'Fredoka One', cursive",
-          fontSize: "clamp(42px, 8vw, 80px)", fontWeight: 900,
+          fontSize: "clamp(40px, 5.5vw, 72px)", fontWeight: 900,
           color: "#fff", lineHeight: 1.05, marginBottom: 20,
-          textShadow: "0 4px 30px rgba(255,140,0,0.3)",
+          textShadow: "0 4px 24px rgba(180,90,0,0.25)",
         }}>Bounce Into<br />the Fun!</h1>
         <p style={{
-          fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(17px, 2.5vw, 22px)",
-          color: "#4A3000", maxWidth: 550, margin: "0 auto 36px", lineHeight: 1.6,
-        }}>Premium bounce house rentals for the Monterey Bay area. Birthday parties, events & backyard fun, delivered & set up for you!</p>
-        <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
+          fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(16px, 1.8vw, 20px)",
+          color: "#4A3000", marginBottom: 36, lineHeight: 1.65, maxWidth: 480,
+        }}>Affordable bounce house rentals for the Monterey Bay area. Birthday parties, events & backyard fun — delivered and set up for you!</p>
+        <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
           <button onClick={() => onNavigate("book")}
             style={{
               background: "#fff", color: "#FF8C00", border: "none",
-              fontFamily: "'DM Sans', sans-serif", fontWeight: 800, fontSize: 18,
-              padding: "16px 36px", borderRadius: 50, cursor: "pointer",
-              boxShadow: "0 8px 30px rgba(0,0,0,0.12)", transition: "transform 0.25s",
+              fontFamily: "'DM Sans', sans-serif", fontWeight: 800, fontSize: 17,
+              padding: "15px 34px", borderRadius: 50, cursor: "pointer",
+              boxShadow: "0 8px 30px rgba(0,0,0,0.14)", transition: "transform 0.2s",
             }}
-            onMouseEnter={e => { e.target.style.transform = "translateY(-3px) scale(1.05)"; }}
+            onMouseEnter={e => { e.target.style.transform = "translateY(-3px) scale(1.04)"; }}
             onMouseLeave={e => { e.target.style.transform = "none"; }}
           >Reserve by Date 📅</button>
           <button onClick={() => onNavigate("inventory")}
             style={{
-              background: "rgba(75,48,0,0.12)", color: "#4A3000",
-              border: "2px solid rgba(75,48,0,0.25)",
-              fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 18,
-              padding: "14px 36px", borderRadius: 50, cursor: "pointer",
-              backdropFilter: "blur(8px)", transition: "all 0.25s",
+              background: "rgba(74,48,0,0.12)", color: "#4A3000",
+              border: "2px solid rgba(74,48,0,0.22)",
+              fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 17,
+              padding: "13px 34px", borderRadius: 50, cursor: "pointer",
+              backdropFilter: "blur(8px)", transition: "all 0.2s",
             }}
-            onMouseEnter={e => { e.target.style.background = "rgba(75,48,0,0.2)"; }}
-            onMouseLeave={e => { e.target.style.background = "rgba(75,48,0,0.12)"; }}
+            onMouseEnter={e => { e.target.style.background = "rgba(74,48,0,0.2)"; }}
+            onMouseLeave={e => { e.target.style.background = "rgba(74,48,0,0.12)"; }}
           >Browse Inventory ✨</button>
         </div>
-        <div style={{ marginTop: 48, display: "flex", gap: 40, justifyContent: "center", flexWrap: "wrap" }}>
-          {[
-            { icon: "⭐", label: "200+ Events" },
-            { icon: "🛡️", label: "Fully Insured" },
-          ].map((s, i) => (
-            <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, color: "#5A3D00", fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 600 }}>
-              <span style={{ fontSize: 22 }}>{s.icon}</span> {s.label}
+        <div style={{ marginTop: 40, display: "flex", gap: 32, flexWrap: "wrap" }}>
+          {[{ icon: "⭐", label: "200+ Events" }, { icon: "🛡️", label: "Fully Insured" }].map((s, i) => (
+            <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, color: "#5A3D00", fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 600 }}>
+              <span style={{ fontSize: 20 }}>{s.icon}</span> {s.label}
             </div>
           ))}
         </div>
-        <div style={{
-          marginTop: 24, background: "rgba(74,48,0,0.08)", borderRadius: 50,
-          padding: "10px 28px", display: "inline-block",
-        }}>
-          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 700, color: "#5A3D00" }}>
-            🚚 Delivering to{" "}
-          </span>
-          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#5A3D00" }}>
-            Watsonville · Aptos · Capitola · Soquel · Santa Cruz · Scotts Valley · Gilroy · Morgan Hill · Campbell · Los Gatos · San Jose
-          </span>
+        <div style={{ marginTop: 20, background: "rgba(74,48,0,0.08)", borderRadius: 50, padding: "9px 22px", display: "inline-block" }}>
+          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 700, color: "#5A3D00" }}>🚚 </span>
+          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: "#5A3D00" }}>Watsonville · Aptos · Capitola · Santa Cruz · Scotts Valley · Gilroy · San Jose</span>
         </div>
       </div>
-      <svg viewBox="0 0 1440 120" style={{ position: "absolute", bottom: -2, left: 0, width: "100%" }}>
+
+      {/* Right image column */}
+      <div style={{
+        flex: "1 1 50%", position: "relative", alignSelf: "stretch",
+        minHeight: 500, display: "flex", alignItems: "center",
+      }}>
+        <img
+          src="/banner.png"
+          alt="The Block Party bounce house"
+          style={{
+            width: "85%", height: "85%", objectFit: "contain",
+            objectPosition: "center", display: "block", margin: "auto",
+          }}
+        />
+      </div>
+
+      <svg viewBox="0 0 1440 120" style={{ position: "absolute", bottom: -2, left: 0, width: "100%", zIndex: 3 }}>
         <path d="M0,80 C360,20 720,120 1440,60 L1440,120 L0,120 Z" fill="#fff" />
       </svg>
     </section>
@@ -415,7 +414,7 @@ function HowItWorks() {
   const steps = [
     { icon: "📅", title: "Pick a Date", desc: "Choose your event date to see which bouncers are available." },
     { icon: "🎪", title: "Choose a Bouncer", desc: "Browse what's open on your date and pick the perfect one." },
-    { icon: "📝", title: "Send Your Info", desc: "Fill out a quick form and we'll confirm within 24 hours." },
+    { icon: "📝", title: "Send Your Info", desc: "Fill out a quick form and pay a $60 deposit to reserve your date. We'll send a confirmation text or email within 24 hours." },
     { icon: "🎉", title: "Bounce All Day!", desc: "We deliver, set up, and pick up. You just enjoy the party!" },
   ];
   const [ref, visible] = useInView();
@@ -1520,7 +1519,7 @@ function BookingWizard({ promoActive }) {
                   {[
                     { id: "snowcone", icon: "🍧", name: "Snow Cone Machine", price: 75 },
                     { id: "cottoncandy", icon: "🍭", name: "Cotton Candy Machine", price: 85 },
-                    { id: "canopy", icon: "⛺", name: "Canopy / Tent", price: 60 },
+                    { id: "canopy", icon: "/icon.png", name: "Canopy / Tent", price: 60 },
                     { id: "jenga", icon: "🧱", name: "Giant Jenga", price: 35 },
                     { id: "connect4", icon: "🔴", name: "Giant Connect 4", price: 35 },
                   ].map(item => {
@@ -1548,7 +1547,9 @@ function BookingWizard({ promoActive }) {
                             display: "flex", alignItems: "center", justifyContent: "center",
                           }}><span style={{ color: "#fff", fontSize: 12, fontWeight: 800 }}>✓</span></div>
                         )}
-                        <div style={{ fontSize: 32, marginBottom: 8 }}>{item.icon}</div>
+                        <div style={{ fontSize: 32, marginBottom: 8, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                          {item.icon.startsWith("/") ? <img src={item.icon} alt={item.name} style={{ width: 36, height: 36, objectFit: "contain" }} /> : item.icon}
+                        </div>
                         <div style={{
                           fontFamily: "'DM Sans', sans-serif", fontSize: 13,
                           fontWeight: selected ? 700 : 500,
@@ -1776,7 +1777,7 @@ function BookingWizard({ promoActive }) {
                     const addOnNames = {
                       snowcone: "🍧 Snow Cone Machine", cottoncandy: "🍭 Cotton Candy Machine",
                       table: `🍽️ Tables ×${form.tableQty}`, chair: `🪑 Chairs ×${form.chairQty}`,
-                      canopy: "⛺ Canopy / Tent",
+                      canopy: "Canopy / Tent",
                       jenga: "🧱 Giant Jenga", connect4: "🔴 Giant Connect 4",
                     };
                     return Object.entries(form.addOns).map(([id, price]) => (
@@ -1993,11 +1994,11 @@ function Footer() {
           }}>BayBouncers</span>
         </div>
         <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#666", lineHeight: 1.6, maxWidth: 400, margin: "0 auto 24px" }}>
-          Delivering premium bounce house rentals to Watsonville, Aptos, Capitola, Soquel, Santa Cruz, Scotts Valley, Gilroy, Morgan Hill, Campbell, Los Gatos, and San Jose.
+          Delivering affordable bounce house rentals to Watsonville, Aptos, Capitola, Soquel, Santa Cruz, Scotts Valley, Gilroy, Morgan Hill, Campbell, Los Gatos, and San Jose.
         </p>
         <div style={{ display: "flex", gap: 24, justifyContent: "center", marginBottom: 28, fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#888" }}>
           <span>📞 (831) 332-9417</span>
-          <span>📧 hello@baybouncers.com</span>
+          <span>📧 hellobaybouncers@gmail.com</span>
         </div>
         <BouncingDots />
         <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "#555", marginTop: 16 }}>

@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Hero layout */
+#home > div:last-of-type { display: flex; }
+@media (max-width: 768px) {
+  #home { flex-direction: column; padding-top: 100px !important; text-align: center; }
+  #home > div:first-of-type { padding: 0 24px !important; max-width: 100% !important; }
+  #home > div:first-of-type div { justify-content: center; }
+  #home > div:last-of-type { display: none; }
+}
+
 /* Date picker visibility — desktop vs mobile */
 .date-mobile { display: none; }
 .date-desktop { display: block; }

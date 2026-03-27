@@ -33,20 +33,8 @@ function CancelContent() {
           fontFamily: "'DM Sans', sans-serif", fontSize: 16,
           color: "#888", lineHeight: 1.6, marginBottom: 32,
         }}>
-          No worries! Your reservation hasn't been charged. You can try again
-          anytime or reach out to us if you'd like to pay with cash instead.
+          No worries! Your reservation hasn't been charged. You can try again anytime.
         </p>
-
-        <div style={{
-          background: "#FFFDF5", borderRadius: 12, padding: "16px 20px",
-          border: "1px solid #FFE88D", marginBottom: 32,
-          fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "#666",
-        }}>
-          <p style={{ margin: 0 }}>
-            Want to pay with cash? Just call us at <strong style={{ color: "#FF8C00" }}>(831) 332-9417</strong> and
-            we'll reserve your bounce house over the phone!
-          </p>
-        </div>
 
         <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
           <a href="/#book"
