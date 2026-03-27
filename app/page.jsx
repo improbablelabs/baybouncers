@@ -825,6 +825,7 @@ function BookingWizard({ promoActive }) {
         date: selectedDate,
         durationType: timing.durationType,
         extraDays: timing.extraDays,
+        startTime: timing.startTime,
       });
       const res = await fetch(`/api/availability?${params}`);
       if (!res.ok) throw new Error("Failed");

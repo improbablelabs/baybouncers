@@ -22,6 +22,13 @@ const ADD_ON_PRICES = {
   jenga: 35,
   connect4: 35,
 };
+const MIN_GAP_HOURS = 3;
+function toMinutes(t) { const [h, m] = t.split(":").map(Number); return h * 60 + m; }
+function conflicts(existingStart, requestedStart) {
+  if (!existingStart || !requestedStart) return true;
+  return Math.abs(toMinutes(existingStart) - toMinutes(requestedStart)) < MIN_GAP_HOURS * 60;
+}
+
 const TABLE_UNIT_PRICE = 20;
 const CHAIR_UNIT_PRICE = 5;
 const TOTAL_TABLES = 2;
@@ -133,8 +140,9 @@ export async function POST(request) {
         .get();
 
       const activeBookings = dayBookings.docs.filter(doc => {
-        const s = doc.data().status;
-        return s !== "cancelled" && s !== "expired";
+        const { status, startTime: existingStart } = doc.data();
+        if (status === "cancelled" || status === "expired") return false;
+        return conflicts(existingStart, data.startTime);
       });
 
       if (activeBookings.length > 0) {

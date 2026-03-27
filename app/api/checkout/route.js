@@ -10,6 +10,13 @@ export const runtime = "nodejs";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
+const MIN_GAP_HOURS = 3;
+function toMinutes(t) { const [h, m] = t.split(":").map(Number); return h * 60 + m; }
+function conflicts(existingStart, requestedStart) {
+  if (!existingStart || !requestedStart) return true;
+  return Math.abs(toMinutes(existingStart) - toMinutes(requestedStart)) < MIN_GAP_HOURS * 60;
+}
+
 // Bouncer data (keep in sync with frontend)
 const BOUNCERS = [
   { id: 1, name: "The Block Party", price: 199 },
@@ -134,8 +141,9 @@ export async function POST(request) {
         .get();
 
       const activeBookings = dayBookings.docs.filter(doc => {
-        const s = doc.data().status;
-        return s !== "cancelled" && s !== "expired";
+        const { status, startTime: existingStart } = doc.data();
+        if (status === "cancelled" || status === "expired") return false;
+        return conflicts(existingStart, data.startTime);
       });
 
       if (activeBookings.length > 0) {

@@ -8,11 +8,25 @@ const BOUNCERS = [
   { id: 3, name: "Ocean Wave Slide", price: 299 },
 ];
 
+const MIN_GAP_HOURS = 3;
+
+function toMinutes(timeStr) {
+  const [h, m] = timeStr.split(":").map(Number);
+  return h * 60 + m;
+}
+
+function conflictsWithTime(existingStartTime, requestedStartTime) {
+  if (!existingStartTime || !requestedStartTime) return true; // assume conflict if times unknown
+  const diff = Math.abs(toMinutes(existingStartTime) - toMinutes(requestedStartTime));
+  return diff < MIN_GAP_HOURS * 60;
+}
+
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
   const date = searchParams.get("date");
   const durationType = searchParams.get("durationType") || "sameday";
   const extraDays = parseInt(searchParams.get("extraDays") || "1");
+  const startTime = searchParams.get("startTime");
 
   if (!date) return Response.json({ error: "date required" }, { status: 400 });
 
@@ -33,8 +47,9 @@ export async function GET(request) {
       .get();
 
     snap.forEach(doc => {
-      const { status, bouncerId } = doc.data();
-      if (status !== "cancelled" && status !== "expired") {
+      const { status, bouncerId, startTime: existingStart } = doc.data();
+      if (status === "cancelled" || status === "expired") return;
+      if (conflictsWithTime(existingStart, startTime)) {
         bookedIds.add(bouncerId);
       }
     });
