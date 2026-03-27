@@ -131,10 +131,14 @@ export async function POST(request) {
         .collection("bookings")
         .where("date", "==", dateStr)
         .where("bouncerId", "==", data.bouncerId)
-        .where("status", "not-in", ["cancelled", "expired"])
         .get();
 
-      if (!dayBookings.empty) {
+      const activeBookings = dayBookings.docs.filter(doc => {
+        const s = doc.data().status;
+        return s !== "cancelled" && s !== "expired";
+      });
+
+      if (activeBookings.length > 0) {
         return Response.json(
           { error: `${bouncer.name} is already booked on ${dateStr}` },
           { status: 409 }

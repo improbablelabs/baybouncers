@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { getAvailableBouncersFromDB } from "@/firebase/firestore";
 import { useCheckout } from "@/hooks/useCheckout";
 
 const BOUNCERS = [
@@ -818,23 +817,24 @@ function BookingWizard({ promoActive }) {
     }
   }
 
-  // Check availability via Firebase
+  // Check availability via server API
   const handleTimingConfirm = async () => {
     setLoading(true);
     try {
-      const avail = await getAvailableBouncersFromDB(
-        BOUNCERS,
-        selectedDate,
-        timing.durationType,
-        timing.extraDays
-      );
-      setAvailable(avail);
+      const params = new URLSearchParams({
+        date: selectedDate,
+        durationType: timing.durationType,
+        extraDays: timing.extraDays,
+      });
+      const res = await fetch(`/api/availability?${params}`);
+      if (!res.ok) throw new Error("Failed");
+      const data = await res.json();
+      setAvailable(data.available);
       setSelectedBouncer(null);
       setStep(3);
     } catch (err) {
       console.error("Error checking availability:", err);
-      setAvailable(BOUNCERS);
-      setStep(3);
+      alert("Couldn't load availability. Please try again.");
     }
     setLoading(false);
   };
